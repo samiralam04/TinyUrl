@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
                 // Send JavaScript for success popup and redirection
                 out.println("<script type='text/javascript'>");
                 out.println("alert('Login successful! Redirecting to URL Shortener...');");
-                out.println("window.location.href = '/shorten';");
+                out.println("window.location.href = '/index.html';");
                 out.println("</script>");
             } else {
                 // Send JavaScript for failure popup and redirection

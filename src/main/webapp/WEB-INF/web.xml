@@ -44,6 +44,50 @@
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
 
+  <!-- Define the Logout Servlet -->
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.servlet.urlshortener.LogoutServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+  <!-- Define the Session Filter -->
+  <filter>
+    <filter-name>SessionFilter</filter-name>
+    <filter-class>com.servlet.urlshortener.SessionFilter</filter-class>
+  </filter>
+
+  <!-- Apply filter to protect index.html and /shorten -->
+  <filter-mapping>
+    <filter-name>SessionFilter</filter-name>
+    <url-pattern>/index.html</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>SessionFilter</filter-name>
+    <url-pattern>/shorten</url-pattern>
+  </filter-mapping>
+
+  <!-- Exclude static resources (CSS/JS) from filter -->
+  <filter-mapping>
+    <filter-name>SessionFilter</filter-name>
+    <url-pattern>*.css</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>SessionFilter</filter-name>
+    <url-pattern>*.js</url-pattern>
+  </filter-mapping>
+
+  <!-- Set session timeout -->
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+
   <!-- Ensure login page comes first -->
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
