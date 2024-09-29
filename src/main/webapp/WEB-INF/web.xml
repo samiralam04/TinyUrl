@@ -16,12 +16,6 @@
     <url-pattern>/shorten</url-pattern>
   </servlet-mapping>
 
-  <!-- Mapping for handling dynamic tiny URLs (e.g., GET /tiny/AAAAB) -->
-  <servlet-mapping>
-    <servlet-name>TinyURL</servlet-name>
-    <url-pattern>/tiny/*</url-pattern>
-  </servlet-mapping>
-
   <!-- Define the Login Servlet -->
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
@@ -61,15 +55,10 @@
     <filter-class>com.servlet.urlshortener.SessionFilter</filter-class>
   </filter>
 
-  <!-- Apply filter to protect index.html and /shorten -->
+  <!-- Apply filter to protect index.html -->
   <filter-mapping>
     <filter-name>SessionFilter</filter-name>
     <url-pattern>/index.html</url-pattern>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>SessionFilter</filter-name>
-    <url-pattern>/shorten</url-pattern>
   </filter-mapping>
 
   <!-- Exclude static resources (CSS/JS) from filter -->
@@ -85,14 +74,12 @@
 
   <!-- Set session timeout -->
   <session-config>
-    <session-timeout>30</session-timeout>
+    <session-timeout>30</session-timeout> <!-- 30 minutes -->
   </session-config>
 
-  <!-- Ensure login page comes first -->
+  <!-- Ensure homepage comes first -->
   <welcome-file-list>
-    <welcome-file>login.html</welcome-file>
+    <welcome-file>index.html</welcome-file> <!-- Change to your homepage servlet if needed -->
   </welcome-file-list>
-
-
 
 </web-app>
