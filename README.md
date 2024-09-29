@@ -6,6 +6,8 @@
 ## Register Page.
 ![TinyURL Banner](register.png)
 
+## Home Page.
+![TinyURL Banner](HomePage.png)
 
 ## Features
 
