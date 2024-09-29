@@ -29,5 +29,8 @@ Developed by **Samir Alam**.
 - **HTML/CSS/JavaScript**: For the frontend UI.
 - **Apache Tomcat**: Serves the web application.
   
-## Project Structure
-src/ │ ├── com.servlet.urlshortener │ ├── TinyURL.java # Servlet for URL shortening logic │ ├── LoginServlet.java # Handles user login │ ├── RegistrationServlet.java # Handles user registration │ ├── LogoutServlet.java # Manages user logout and session invalidation │ └── SessionFilter.java # Filter to prevent unauthorized access to protected pages │ ├── webapp/ │ ├── index.html # Homepage for URL shortening │ ├── login.html # User login page │ ├── register.html # User registration page │ ├── style.css # Styling for the pages │ └── WEB-INF/ │ ├── web.xml # Servlet and filter configurations
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/tinyurl-shortener.git
