@@ -7,9 +7,6 @@
 ![TinyURL Banner](register.png)
 
 
-## Demo
-[Demo Link](http://yourdemo.link)  <!-- Replace with your actual demo link -->
-
 ## Features
 
 - URL shortening service
@@ -33,4 +30,4 @@ Developed by **Samir Alam**.
 - **Apache Tomcat**: Serves the web application.
   
 ## Project Structure
-
+src/ │ ├── com.servlet.urlshortener │ ├── TinyURL.java # Servlet for URL shortening logic │ ├── LoginServlet.java # Handles user login │ ├── RegistrationServlet.java # Handles user registration │ ├── LogoutServlet.java # Manages user logout and session invalidation │ └── SessionFilter.java # Filter to prevent unauthorized access to protected pages │ ├── webapp/ │ ├── index.html # Homepage for URL shortening │ ├── login.html # User login page │ ├── register.html # User registration page │ ├── style.css # Styling for the pages │ └── WEB-INF/ │ ├── web.xml # Servlet and filter configurations
