@@ -1,6 +1,9 @@
 # Tiny URL Shortener with Java Servlets and PostgreSQL (2024)
 
+## Login Page.
 ![TinyURL Banner](login.png)
+
+## Register Page.
 ![TinyURL Banner](register.png)
 
 
