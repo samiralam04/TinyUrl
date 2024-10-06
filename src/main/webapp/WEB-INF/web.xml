@@ -16,6 +16,12 @@
     <url-pattern>/shorten</url-pattern>
   </servlet-mapping>
 
+  <!-- Add mapping for tiny URLs (for redirection) -->
+  <servlet-mapping>
+    <servlet-name>TinyURL</servlet-name>
+    <url-pattern>/tiny/*</url-pattern>
+  </servlet-mapping>
+
   <!-- Define the Login Servlet -->
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
@@ -79,7 +85,7 @@
 
   <!-- Ensure homepage comes first -->
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file> <!-- Change to your homepage servlet if needed -->
+    <welcome-file>index.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
