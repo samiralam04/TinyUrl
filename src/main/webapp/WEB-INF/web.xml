@@ -22,7 +22,7 @@
     <url-pattern>/tiny/*</url-pattern>
   </servlet-mapping>
 
-  <!-- Define the Login Servlet -->
+  <!-- Define other servlets -->
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.servlet.urlshortener.LoginServlet</servlet-class>
@@ -33,7 +33,6 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
 
-  <!-- Define the Registration Servlet -->
   <servlet>
     <servlet-name>RegistrationServlet</servlet-name>
     <servlet-class>com.servlet.urlshortener.RegistrationServlet</servlet-class>
@@ -44,7 +43,6 @@
     <url-pattern>/register</url-pattern>
   </servlet-mapping>
 
-  <!-- Define the Logout Servlet -->
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>com.servlet.urlshortener.LogoutServlet</servlet-class>
