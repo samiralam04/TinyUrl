@@ -33,10 +33,10 @@
     </tr>
     <tr>
         <td style="word-break: break-all;">${originalUrl}</td>
-        <td><a href="/URL-shortener/tiny/${tinyUrl}">/tiny/${tinyUrl}</a></td>
+        <td><a href="/tiny/${tinyUrl}">/tiny/${tinyUrl}</a></td>
         <td>
-            <button onclick="copyToClipboard('/URL-shortener/tiny/${tinyUrl}')">Copy URL</button>
-            <button onclick="generateQRCode('/URL-shortener/tiny/${tinyUrl}')">Generate QR Code</button>
+            <button onclick="copyToClipboard('/tiny/${tinyUrl}')">Copy URL</button>
+            <button onclick="generateQRCode('/tiny/${tinyUrl}')">Generate QR Code</button>
         </td>
     </tr>
 </table>

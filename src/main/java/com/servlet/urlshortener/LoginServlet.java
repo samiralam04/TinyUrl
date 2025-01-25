@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
                     "jdbc:postgresql://localhost:5432/urlshortener", "postgres", "mark47");
 
             // Query to check if the user exists
-            String query = "SELECT * FROM urlUser WHERE username = ? AND password = ?";
+            String query = "SELECT * FROM users WHERE username = ? AND password = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, username);
             stmt.setString(2, password);  // In production, compare hashed passwords
@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
                 // Send JavaScript for success popup and redirection
                 out.println("<script type='text/javascript'>");
                 out.println("alert('Login successful! Redirecting to URL Shortener...');");
-                out.println("window.location.href = '/index.html';");
+                out.println("window.location.href = '/URL-shortener/index.html';");
                 out.println("</script>");
             } else {
                 // Send JavaScript for failure popup and redirection

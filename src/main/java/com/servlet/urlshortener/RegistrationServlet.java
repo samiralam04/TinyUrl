@@ -23,7 +23,7 @@ public class RegistrationServlet extends HttpServlet {
             Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/urlshortener", "postgres", "mark47");
 
             // Insert the user into the database
-            String query = "INSERT INTO urlUser (username, password) VALUES (?, ?)";
+            String query = "INSERT INTO users (username, password) VALUES (?, ?)";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, username);
             stmt.setString(2, password);  // In production, hash the password for security
@@ -38,7 +38,7 @@ public class RegistrationServlet extends HttpServlet {
                 // Show success popup and redirect to login
                 out.println("<script type='text/javascript'>");
                 out.println("alert('Registration successful! Redirecting to login page...');");
-                out.println("window.location.href = 'login.html';");
+                out.println("window.location.href = '/URL-shortener/login.html';");
                 out.println("</script>");
             } else {
                 // Show failure message
