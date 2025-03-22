@@ -38,7 +38,7 @@ public class TinyURL extends HttpServlet {
 
             // Generate new tiny URL if not found
             if (tinyUrl == null) {
-                tinyUrl = generateTinyUrl();
+                tinyUrl = generateTinyUrl(connection); // Pass connection to ensure uniqueness
                 String insertQuery = "INSERT INTO url_mapping (original_url, tiny_url) VALUES (?, ?)";
                 try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
                     insertStmt.setString(1, originalUrl);
@@ -46,6 +46,7 @@ public class TinyURL extends HttpServlet {
                     insertStmt.executeUpdate();
                 }
             }
+
 
             // Forward to JSP for rendering
             request.setAttribute("originalUrl", originalUrl);
@@ -90,13 +91,33 @@ public class TinyURL extends HttpServlet {
         }
     }
 
-    private String generateTinyUrl() {
-        StringBuilder tinyUrl = new StringBuilder();
-        long tempCounter = counter++;
-        for (int i = 0; i < 5; i++) {
-            tinyUrl.insert(0, BASE62.charAt((int) (tempCounter % BASE)));
-            tempCounter /= BASE;
-        }
-        return tinyUrl.toString();
+    private String generateTinyUrl(Connection connection) throws SQLException {
+        String tinyUrl;
+        boolean exists;
+
+        do {
+            StringBuilder tinyBuilder = new StringBuilder();
+            long tempCounter = System.currentTimeMillis() % 100000000; // Use timestamp to avoid duplicates
+
+            for (int i = 0; i < 5; i++) {
+                tinyBuilder.insert(0, BASE62.charAt((int) (tempCounter % BASE)));
+                tempCounter /= BASE;
+            }
+
+            tinyUrl = tinyBuilder.toString();
+
+            // Check if the generated tinyUrl already exists in the database
+            String checkQuery = "SELECT COUNT(*) FROM url_mapping WHERE tiny_url = ?";
+            try (PreparedStatement checkStmt = connection.prepareStatement(checkQuery)) {
+                checkStmt.setString(1, tinyUrl);
+                try (ResultSet resultSet = checkStmt.executeQuery()) {
+                    resultSet.next();
+                    exists = resultSet.getInt(1) > 0;
+                }
+            }
+        } while (exists); // Keep generating until we get a unique URL
+
+        return tinyUrl;
     }
+
 }
